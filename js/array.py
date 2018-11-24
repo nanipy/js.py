@@ -189,3 +189,21 @@ class Array(list):
         for i in items:
             self.append(i)
         return len(self)
+
+    def reduce(self, callback, initial=None):
+        params = signature(callback).parameters
+        if initial is None:
+            ret = self[0]
+            idx = 1
+        else:
+            ret = inital
+            idx = 0
+        while idx < len(self):
+            if len(params) == 2:
+                ret = callback(ret, self[idx])
+            elif len(params) == 3:
+                ret = callback(ret, self[idx], idx)
+            elif len(params) == 4:
+                ret = callback(ret, self[idx], idx, self)
+            idx += 1
+        return ret

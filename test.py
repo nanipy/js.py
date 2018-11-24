@@ -1,5 +1,4 @@
 import js
 
-c = js.Array([1, 2, 3, 4, 5, 1])
-print(c.push(2, 6))
-print(c)
+c = js.Array([1, 2, 3, 4, 5])
+print(c.reduce(lambda x, y: x * y))
