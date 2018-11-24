@@ -46,8 +46,9 @@ class Array(list):
             raise ArgumentError("New Array length must be positive")
         for i in self[new_length:]:
             self.remove(i)
-        for i in range(new_length - len(self)): # allow setting a higher length than currently existing
-            self[len(self) + i] = None
+        old_len = len(self)
+        for i in range(new_length - old_len): # allow setting a higher length than currently existing
+            self[old_len + i] = None
 
     @property
     def prototype(self):
