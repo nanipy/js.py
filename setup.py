@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="js",
+    name="js.py",
     version="1.0.0",
     author="Jens Reidel",
     author_email="jens.reidel@gmail.com",

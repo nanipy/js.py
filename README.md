@@ -1,6 +1,9 @@
 # js.py
 A library that extends Python base classes with their JavaScript default methods.
 
+## Installation
+`pip3 install js.py` or `pip3 install --user js.py`
+
 ## Why js.py?
 js.py makes your JavaScript code compatible in Python.
 
