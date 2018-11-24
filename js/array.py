@@ -1,4 +1,5 @@
 from copy import copy
+from inspect import signature
 
 class Array(list):
 
@@ -53,4 +54,68 @@ class Array(list):
         tmp = copy(self)
         for i, j in enumerate(array_to_copy):
             tmp[target + i] = j
+        return tmp
+
+    def entries(self):
+        for i, j in enumerate(self):
+            yield Array([i, j])
+
+    def every(self, callback, this=None):
+        self = this or self
+        params = signature(callback).parameters
+        if len(params) == 1:
+            for i in self:
+                if callback(i) is False:
+                    return False
+        elif len(params) == 2:
+            for i, j in enumerate(self):
+                if callback(j, i) is False:
+                    return False
+        elif len(params) == 3:
+            for i, j in enumerate(self):
+                if callback(j, i, self) is False:
+                    return False
+        return True
+
+    def filter(self, callback, this=None):
+        self = this or self
+        params = signature(callback).parameters
+        passed = Array()
+        if len(params) == 1:
+            for i in self:
+                if callback(i) is True:
+                    passed.append(i)
+        elif len(params) == 2:
+            for i, j in enumerate(self):
+                if callback(j, i) is True:
+                    passed.append(j)
+        elif len(params) == 3:
+            for i, j in enumerate(self):
+                if callback(j, i, self) is True:
+                    passed.append(j)
+        return passed
+
+    def find(self, callback, this=None):
+        self = this or self
+        params = signature(callback).parameters
+        if len(params) == 1:
+            for i in self:
+                if callback(i) is True:
+                    return i
+        elif len(params) == 2:
+            for i, j in enumerate(self):
+                if callback(j, i) is True:
+                    return j
+        elif len(params) == 3:
+            for i, j in enumerate(self):
+                if callback(j, i, self) is True:
+                    return j
+        return None
+
+    def fill(self, val, start=0, end=None):
+        if end is None or end > len(self):
+            end = len(self)
+        tmp = copy(self)
+        for i in range(start, end):
+            tmp[i] = val
         return tmp
