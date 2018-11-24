@@ -1,5 +1,11 @@
 from copy import copy
 from inspect import signature
+import collections
+
+def issequenceforme(obj):
+    if isinstance(obj, str):
+        return False
+    return isinstance(obj, collections.Sequence)
 
 class Array(list):
 
@@ -14,9 +20,9 @@ class Array(list):
 
     def __getitem__(self, item):
         result = list.__getitem__(self, item)
-        try:
+        if issequenceforme(result):
             return Array(result)
-        except TypeError:
+        else:
             return result
 
     @classmethod
@@ -237,3 +243,45 @@ class Array(list):
         i = self[0]
         del self[0]
         return i
+
+    def slice(self, start, end):
+        return self[start:end]
+
+    def some(self, callback, this=None):
+        self = this or self
+        params = signature(callback).parameters
+        if len(params) == 1:
+            for i in self:
+                if callback(i) is True:
+                    return True
+        elif len(params) == 2:
+            for i, j in enumerate(self):
+                if callback(j, i) is True:
+                    return True
+        elif len(params) == 3:
+            for i, j in enumerate(self):
+                if callback(j, i, self) is True:
+                    return True
+        return False
+
+    def _sort(self, func):
+        self.sort(key=func)
+
+    def splice(self, index, delete_count=0, *added):
+        out = Array()
+        for i in range(delete_count):
+            out.append(self[index + i])
+            del self[index + i]
+        for i, j in enumerate(added):
+            self.insert(index + i, j)
+        return out
+
+    def toString(self):
+        return ",".join(str(i) for i in self)
+
+    def unshift(self, *elements):
+        self[0:0] = elements
+        return len(self)
+
+    def valueOf(self):
+        return self
