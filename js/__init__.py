@@ -1,1 +1,1 @@
-from .jslist import *
+from .array import *
