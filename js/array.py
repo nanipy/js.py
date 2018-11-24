@@ -113,6 +113,21 @@ class Array(list):
                     passed.append(j)
         return passed
 
+    def _map(self, callback, this=None):
+        self = this or self
+        params = signature(callback).parameters
+        res = Array()
+        if len(params) == 1:
+            for i in self:
+                res.append(callback(i))
+        elif len(params) == 2:
+            for i, j in enumerate(self):
+                res.append(callback(j, i))
+        elif len(params) == 3:
+            for i, j in enumerate(self):
+                res.append(callback(j, i, self))
+        return res
+
     def findIndex(self, callback, this=None):
         self = this or self
         params = signature(callback).parameters
