@@ -207,3 +207,22 @@ class Array(list):
                 ret = callback(ret, self[idx], idx, self)
             idx += 1
         return ret
+
+    def reduceRight(self, callback, initial=None):
+        params = signature(callback).parameters
+        self_2 = self[::-1]
+        if initial is None:
+            ret = self_2[0]
+            idx = 1
+        else:
+            ret = inital
+            idx = 0
+        while idx < len(self_2):
+            if len(params) == 2:
+                ret = callback(ret, self_2[idx])
+            elif len(params) == 3:
+                ret = callback(ret, self_2[idx], idx)
+            elif len(params) == 4:
+                ret = callback(ret, self_2[idx], idx, self)
+            idx += 1
+        return ret
