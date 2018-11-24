@@ -232,3 +232,8 @@ class Array(list):
         for i, j in enumerate(old):
             self[-(i + 1)] = j
         return self
+
+    def shift(self):
+        i = self[0]
+        del self[0]
+        return i
