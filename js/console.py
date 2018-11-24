@@ -1,0 +1,2 @@
+class console:
+    log = print
