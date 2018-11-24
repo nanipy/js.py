@@ -157,3 +157,15 @@ class Array(list):
 
     def includes(self, item, start=0):
         return item in self[start:]
+
+    def indexOf(self, item, start=0):
+        try:
+            return self[start:].index(item)
+        except ValueError: # we want it to be the exact JS way and return -1 if not found
+            return -1
+
+    def lastIndexOf(self, item, start=-1):
+        try:
+            return len(self) - 1 - self[::start].index(item)
+        except ValueError: # we want it to be the exact JS way and return -1 if not found
+            return -1
