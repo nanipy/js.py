@@ -77,6 +77,19 @@ class Array(list):
                     return False
         return True
 
+    def forEach(self, callback, this=None):
+        self = this or self
+        params = signature(callback).parameters
+        if len(params) == 1:
+            for i in self:
+                callback(i)
+        elif len(params) == 2:
+            for i, j in enumerate(self):
+                callback(j, i)
+        elif len(params) == 3:
+            for i, j in enumerate(self):
+                callback(j, i, self)
+
     def filter(self, callback, this=None):
         self = this or self
         params = signature(callback).parameters
@@ -94,6 +107,23 @@ class Array(list):
                 if callback(j, i, self) is True:
                     passed.append(j)
         return passed
+
+    def findIndex(self, callback, this=None):
+        self = this or self
+        params = signature(callback).parameters
+        if len(params) == 1:
+            for i, j in enumerate(self):
+                if callback(j) is True:
+                    return i
+        elif len(params) == 2:
+            for i, j in enumerate(self):
+                if callback(j, i) is True:
+                    return i
+        elif len(params) == 3:
+            for i, j in enumerate(self):
+                if callback(j, i, self) is True:
+                    return i
+        return None
 
     def find(self, callback, this=None):
         self = this or self
