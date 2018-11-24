@@ -226,3 +226,9 @@ class Array(list):
                 ret = callback(ret, self_2[idx], idx, self)
             idx += 1
         return ret
+
+    def reverse(self):
+        old = copy(self)
+        for i, j in enumerate(old):
+            self[-(i + 1)] = j
+        return self
