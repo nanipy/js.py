@@ -19,6 +19,12 @@ class Array(list):
         except TypeError:
             return result
 
+    @classmethod
+    def _from(cls, obj, mapfn=None, this=None):
+        mapfn = mapfn or (lambda x: x)
+        self = this
+        return cls(list(map(mapfn, list(obj))))
+
     @property
     def constructor(self):
         """Returns the function that created the Array object's prototype"""
