@@ -171,10 +171,9 @@ class Array(list):
     def fill(self, val, start=0, end=None):
         if end is None or end > len(self):
             end = len(self)
-        tmp = copy(self)
         for i in range(start, end):
-            tmp[i] = val
-        return tmp
+            self[i] = val
+        return self
 
     def includes(self, item, start=0):
         return item in self[start:]
