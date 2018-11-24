@@ -13,7 +13,7 @@ class JSList(list):
 
     @length.setter
     def length(self, new_length):
-        if length < 0:
+        if new_length < 0:
             raise ArgumentError("New Array length must be positive")
         self = self[:new_length]
 
