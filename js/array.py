@@ -154,3 +154,6 @@ class Array(list):
         for i in range(start, end):
             tmp[i] = val
         return tmp
+
+    def includes(self, item, start=0):
+        return item in self[start:]
