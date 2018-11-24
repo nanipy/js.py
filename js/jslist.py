@@ -1,6 +1,6 @@
 from copy import copy
 
-class JSList(list):
+class Array(list):
     @property
     def constructor(self):
         """Returns the function that created the Array object's prototype"""
