@@ -47,8 +47,9 @@ class Array(list):
         for i in self[new_length:]:
             self.remove(i)
         old_len = len(self)
-        for i in range(new_length - old_len): # allow setting a higher length than currently existing
-            self[old_len + i] = None
+        if new_length > old_len:
+            for i in range(new_length - old_len): # allow setting a higher length than currently existing
+                self.append(None)
 
     @property
     def prototype(self):
