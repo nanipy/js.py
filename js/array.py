@@ -20,9 +20,8 @@ class Array(list):
             return result
 
     @classmethod
-    def _from(cls, obj, mapfn=None, this=None):
+    def _from(cls, obj, mapfn=None):
         mapfn = mapfn or (lambda x: x)
-        self = this
         return cls(list(map(mapfn, list(obj))))
 
     @property
