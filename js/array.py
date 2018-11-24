@@ -264,8 +264,11 @@ class Array(list):
                     return True
         return False
 
-    def _sort(self, func):
-        self.sort(key=func)
+    def _sort(self, func=None):
+        if not func:
+            self.sort()
+        else:
+            self.sort(key=func)
 
     def splice(self, index, delete_count=0, *added):
         out = Array()

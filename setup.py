@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="js",
-    version="0.0.1",
+    version="1.0.0",
     author="Jens Reidel",
     author_email="jens.reidel@gmail.com",
     description="A library that extends Python base classes with their JavaScript default methods.",
