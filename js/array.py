@@ -184,3 +184,8 @@ class Array(list):
             return len(self) - 1 - self[::start].index(item)
         except ValueError: # we want it to be the exact JS way and return -1 if not found
             return -1
+
+    def push(self, *items):
+        for i in items:
+            self.append(i)
+        return len(self)
