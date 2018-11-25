@@ -67,7 +67,7 @@ class String(str):
         raise NotImplementedError("To be implemented soon")
 
     def match(self, regexpr):
-        return re.findall(regexpr, self)
+        return Array(re.findall(regexpr, self))
 
     def repeat(self, times):
         times = round(times)
