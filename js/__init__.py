@@ -1,3 +1,3 @@
-from .array import *
-from .console import *
-from .require import *
+from .core.array import *
+from .core.console import *
+from .core.require import *
