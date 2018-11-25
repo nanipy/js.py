@@ -84,7 +84,7 @@ class String(str):
     def slice(self, start, end):
         return self[start:end]
 
-    def _split(seperator=None, limit=None):
+    def _split(self, seperator=None, limit=None):
         if seperator is None:
             return Array([self])
         return Array(self.split(seperator))[:limit]
