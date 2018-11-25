@@ -44,7 +44,7 @@ class String(str):
 
     @classmethod
     def fromCharCode(cls, *codes):
-        return cls(''.join(map(unichr, codes)))
+        return cls(''.join([chr(int(c)) for c in codes]))
 
     def includes(self, search_string, position=0):
         if position + len(search_string) > len(self):
@@ -72,7 +72,7 @@ class String(str):
     def repeat(self, times):
         times = round(times)
         if times < 0:
-            raise ArgumentError("Times must be positive or 0!")
+            raise ValueError("Times must be positive or 0!")
         return self * times
 
     def _replace(self, find, replace):
