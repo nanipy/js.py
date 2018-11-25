@@ -1,4 +1,4 @@
-from js import console, require, Array
+from js.core import console, require, Array
 
 this = require("random");
 
