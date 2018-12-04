@@ -29,7 +29,7 @@ nums.fill("Foobar");
 console.log(nums);
 ```
 
-As seen above, only minor changes are required the the code for it to function in Python.
+As seen above, only minor changes are required for the code for it to function in Python.
 
 ## Is it pythonic?
 No. Not at all. But who cares? It works and it's for fun!
