@@ -5,7 +5,7 @@ A library that extends Python base classes with their JavaScript default methods
 `pip3 install js.py` or `pip3 install --user js.py`
 
 ## Why js.py?
-js.py makes your JavaScript code compatible in Python.
+js.py makes your JavaScript code compatible in Python with minor changes.
 
 Imagine this JS code:
 ```js
@@ -29,7 +29,7 @@ nums.fill("Foobar");
 console.log(nums);
 ```
 
-It lets you use most of your JS code in Python with only minor changes!
+As seen above, only minor changes are required the the code for it to function in Python.
 
 ## Is it pythonic?
-No. Not at all? But who cares? It works and it's for fun!
+No. Not at all. But who cares? It works and it's for fun!
