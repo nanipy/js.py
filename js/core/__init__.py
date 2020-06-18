@@ -1,5 +1,4 @@
-from .require import *
 from .array import *
-from .string import *
 from .console import *
-from .boolean import *
+from .require import *
+from .string import *

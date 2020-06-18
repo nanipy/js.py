@@ -19,11 +19,11 @@ console.log(nums);
 
 Using js.py, it looks like this:
 ```py
-from js import console, require, Array
+import js
 
 this = require("a-lib");
 
-nums = Array();
+nums = [];
 nums.length = 10;
 nums.fill("Foobar");
 console.log(nums);
