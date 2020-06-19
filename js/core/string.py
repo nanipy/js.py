@@ -107,11 +107,14 @@ def slice(self, start, end):
     return self[start:end]
 
 
+_old_split = str.split
+
+
 @curses(str, "split")
 def _split(self, seperator=None, limit=None):
     if seperator is None:
         return list(self)
-    return self.split(seperator)[:limit]
+    return _old_split(self, seperator)[:limit]
 
 
 @curses(str, "startsWith")
